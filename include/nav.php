@@ -1,7 +1,15 @@
+<?php
+$flow = null;
+
+if(isset($_REQUEST['flow'])){
+  $flow = $_REQUEST['flow'];
+}
+
+?>
 <div id="sidebar-collapse" class="col-sm-3 col-lg-3 sidebar">
   <ul class="nav menu">
     <li class="active">
-      <a href="index.html">
+      <a href="index.php">
         <svg class="glyph stroked dashboard-dial">
           <use xlink:href="#stroked-dashboard-dial"></use>
         </svg> Utama
@@ -15,8 +23,8 @@
         </span> Organisasi
       </a>
       <ul class="children collapse" id="organization">
-        <li>
-          <a class="" href="#">
+        <li class="">
+          <a class="<?php if(isset($flow)) { if($flow == 'organization_list') echo 'active-nav'; }?>" href="?flow=organization_list">
             <i class="fa fa-bars" aria-hidden="true"></i> Mengenai Organisasi
           </a>
         </li>

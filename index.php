@@ -17,6 +17,8 @@
   <!--[if lt IE 9]>
   <script src="js/respond.min.js"></script>
   <![endif]-->
+  <script src="js/jquery-1.11.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 
 </head>
 
@@ -79,20 +81,49 @@
     </ol>
   </div><!--/.row-->
 
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Utama</h1>
-    </div>
-  </div><!--/.row-->
+  <?php
 
-  <?php include("include/dashboard.php"); ?>
+  $flow = null;
+
+  if(isset($_REQUEST['flow'])){
+    $flow = $_REQUEST['flow'];
+  }
+
+  switch($flow){
+
+    case 'organization_list':
+      include("include/organization/list.php");
+      ?>
+
+        <script>
+          $('[href="#organization"]').trigger('click')
+        </script>
+
+      <?php
+      break;
+
+    default:
+      include("include/dashboard.php");
+      break;
+
+
+  }
+
+  ?>
 
 </div>  <!--/.main-->
 
-<script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<?php
+
+if(!isset($_REQUEST['flow'])){
+
+?>
+
 <script src="js/chart.min.js"></script>
 <script src="js/chart-data.js"></script>
+
+<?php } ?>
+
 <script src="js/bootstrap-datepicker.js"></script>
 <script>
 
