@@ -11,31 +11,23 @@
     <li class="parent ">
       <a data-toggle="collapse" href="#organization">
         <span>
-          <svg class="glyph stroked chevron-down">
-            <use xlink:href="#stroked-chevron-down"></use>
-          </svg>
+          <i class="fa fa-building-o" aria-hidden="true"></i>
         </span> Organisasi
       </a>
       <ul class="children collapse" id="organization">
         <li>
           <a class="" href="#">
-            <svg class="glyph stroked chevron-right">
-              <use xlink:href="#stroked-chevron-right"></use>
-            </svg> Mengenai Organisasi
+            <i class="fa fa-bars" aria-hidden="true"></i> Mengenai Organisasi
           </a>
         </li>
         <li>
           <a class="" href="#">
-            <svg class="glyph stroked chevron-right">
-              <use xlink:href="#stroked-chevron-right"></use>
-            </svg> Carta Organisasi
+            <i class="fa fa-bars" aria-hidden="true"></i> Carta Organisasi
           </a>
         </li>
         <li>
           <a class="" href="#">
-            <svg class="glyph stroked chevron-right">
-              <use xlink:href="#stroked-chevron-right"></use>
-            </svg> Kakitangan
+            <i class="fa fa-bars" aria-hidden="true"></i> Kakitangan
           </a>
         </li>
       </ul>
@@ -44,9 +36,7 @@
     <li class="parent ">
       <a data-toggle="collapse" href="#vehicle">
         <span>
-          <svg class="glyph stroked chevron-down">
-            <use xlink:href="#stroked-chevron-down"></use>
-          </svg>
+          <i class="fa fa-car" aria-hidden="true"></i>
         </span> Kenderaan
       </a>
       <ul class="children collapse" id="vehicle">
