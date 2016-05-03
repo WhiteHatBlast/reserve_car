@@ -48,6 +48,9 @@ if(isset($_REQUEST['flow'])){
         </span> Kenderaan
       </a>
       <ul class="children collapse" id="vehicle">
+
+        <?php if(rolesAllowed($user_roles, [01,02])) /* admin, staff, user */ {?>
+
         <li>
           <a class="" href="#">
             <svg class="glyph stroked notepad ">
@@ -69,27 +72,38 @@ if(isset($_REQUEST['flow'])){
             </svg> Pemeriksaan Tenikal Bulanan
           </a>
         </li>
-        <li>
-          <a class="" href="#">
-            <svg class="glyph stroked notepad ">
-              <use xlink:href="#stroked-notepad"/>
-            </svg> Senarai Kakitangan Staf
-          </a>
-        </li>
-        <li>
-          <a class="" href="#">
-            <svg class="glyph stroked sound on">
-              <use xlink:href="#stroked-sound-on"/>
-            </svg> Perintah Harian Staf
-          </a>
-        </li>
-        <li>
-          <a class="" href="#">
-            <svg class="glyph stroked bag">
-              <use xlink:href="#stroked-bag"></use>
-            </svg> Tempah Kenderaan
-          </a>
-        </li>
+
+        <?php } ?>
+
+        <?php if(rolesAllowed($user_roles, [01,02])) /* admin, staff, user */ {?>
+
+          <li>
+            <a class="" href="#">
+              <svg class="glyph stroked notepad ">
+                <use xlink:href="#stroked-notepad"/>
+              </svg> Senarai Kakitangan Staf
+            </a>
+          </li>
+          <li>
+            <a class="" href="#">
+              <svg class="glyph stroked sound on">
+                <use xlink:href="#stroked-sound-on"/>
+              </svg> Perintah Harian Staf
+            </a>
+          </li>
+
+        <?php } ?>
+
+        <?php if(rolesAllowed($user_roles, [01,03])) /* admin, staff, user */ {?>
+          <li>
+            <a class="" href="#">
+              <svg class="glyph stroked bag">
+                <use xlink:href="#stroked-bag"></use>
+              </svg> Tempah Kenderaan
+            </a>
+          </li>
+        <?php } ?>
+
         <li>
           <a class="" href="#">
             <svg class="glyph stroked calendar">
@@ -99,6 +113,28 @@ if(isset($_REQUEST['flow'])){
         </li>
       </ul>
     </li>
+
+    <?php if(rolesAllowed($user_roles, [01])) /* admin, staff, user */ {?>
+
+      <li class="parent ">
+        <a data-toggle="collapse" href="#admin">
+          <span>
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </span> Pentadbir
+        </a>
+        <ul class="children collapse" id="admin">
+
+          <li>
+            <a class="<?php if(isset($flow)) { if($flow == 'staff_list') echo 'active-nav'; }?>" href="?flow=staff_list">
+              <i class="fa fa-user-secret"></i> Senarai Staff
+            </a>
+          </li>
+
+        </ul>
+
+      </li>
+
+    <?php } ?>
 
   </ul>
 

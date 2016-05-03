@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-lg-12">
-    <h1 class="page-header">Senarai Organisasi</h1>
+    <h1 class="page-header">Senarai Staf</h1>
   </div>
 </div><!--/.row-->
 

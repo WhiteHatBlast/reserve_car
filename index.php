@@ -1,3 +1,32 @@
+<?php
+
+if(PHP_SESSION_NONE){
+
+  session_start();
+
+  $userId = $_SESSION['session_userID'];
+
+  include("include/findOneUser.php");
+
+}
+
+?>
+
+<?php
+
+ function  rolesAllowed($user_role, $roles)
+{
+
+  foreach ((array) $roles as $role) {
+    if ($role == $user_role) {
+      return true;
+    }
+  }
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +68,7 @@
             <svg class="glyph stroked male-user">
               <use xlink:href="#stroked-male-user"></use>
             </svg>
-            Pengguna <span class="caret"></span></a>
+            <?php echo $user_email;?> <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li>
               <a href="#">
@@ -102,6 +131,17 @@
       <?php
       break;
 
+      case 'staff_list':
+      include("include/staff/list.php");
+      ?>
+
+        <script>
+          $('[href="#admin"]').trigger('click')
+        </script>
+
+      <?php
+      break;
+
     default:
       include("include/dashboard.php");
       break;
@@ -125,6 +165,7 @@ if(!isset($_REQUEST['flow'])){
 <?php } ?>
 
 <script src="js/bootstrap-datepicker.js"></script>
+<script src="js/bootstrap-table.js"></script>
 <script>
 
   !function ($) {
