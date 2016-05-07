@@ -16,6 +16,8 @@ if(isset($_REQUEST['flow'])){
       </a>
     </li>
 
+    <?php if(rolesAllowed($user_roles, [01])) /* staff */ {?>
+
     <li class="parent ">
       <a data-toggle="collapse" href="#organization">
         <span>
@@ -41,6 +43,8 @@ if(isset($_REQUEST['flow'])){
       </ul>
     </li>
 
+    <?php } ?>
+
     <li class="parent ">
       <a data-toggle="collapse" href="#vehicle">
         <span>
@@ -49,27 +53,20 @@ if(isset($_REQUEST['flow'])){
       </a>
       <ul class="children collapse" id="vehicle">
 
-        <?php if(rolesAllowed($user_roles, [01,02])) /* admin, staff, user */ {?>
+        <?php if(rolesAllowed($user_roles, [02])) /* staff */ {?>
 
         <li>
           <a class="<?php if(isset($flow)) { if($flow == 'vehicle_carryOnList') echo 'active-nav'; }?>" href="?flow=vehicle_carryOnList">
             <svg class="glyph stroked notepad ">
               <use xlink:href="#stroked-notepad"/>
-            </svg> Senarai Pegangan Kenderaan
+            </svg> Senarai Kenderaan
           </a>
         </li>
         <li>
-          <a class="" href="#">
+          <a href="#">
             <svg class="glyph stroked notepad ">
               <use xlink:href="#stroked-notepad"/>
-            </svg> Senarai Kenderaan Rosak
-          </a>
-        </li>
-        <li>
-          <a class="" href="#">
-            <svg class="glyph stroked clipboard with paper">
-              <use xlink:href="#stroked-clipboard-with-paper"/>
-            </svg> Pemeriksaan Tenikal Bulanan
+            </svg> Senarai Tempahan Kenderaan
           </a>
         </li>
 
@@ -96,21 +93,21 @@ if(isset($_REQUEST['flow'])){
 
         <?php if(rolesAllowed($user_roles, [01,03])) /* admin, staff, user */ {?>
           <li>
-            <a class="" href="#">
+            <a class="<?php if(isset($flow)) { if($flow == 'order_vehicle_list') echo 'active-nav'; }?>" href="?flow=order_vehicle_list" href="#">
               <svg class="glyph stroked bag">
                 <use xlink:href="#stroked-bag"></use>
               </svg> Tempah Kenderaan
             </a>
           </li>
+          <li>
+            <a class="<?php if(isset($flow)) { if($flow == 'ordered_vehicle_list') echo 'active-nav'; }?>" href="?flow=ordered_vehicle_list" href="#">
+              <svg class="glyph stroked bag">
+                <use xlink:href="#stroked-bag"></use>
+              </svg> Senarai Tempahan Kenderaan
+            </a>
+          </li>
         <?php } ?>
 
-        <li>
-          <a class="" href="#">
-            <svg class="glyph stroked calendar">
-              <use xlink:href="#stroked-calendar"/>
-            </svg> Jadual Harian
-          </a>
-        </li>
       </ul>
     </li>
 

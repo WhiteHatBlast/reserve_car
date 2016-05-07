@@ -9,7 +9,7 @@ date_default_timezone_set('UTC');
 
     $designation = $_POST['designation'];
     $carry = $_POST['carry'];
-    $date_created = date("d/m/Y h:mm:s");
+    $date_created = $_POST['date_created'];
     $measure_km = $_POST['measure_km'];
     $price = $_POST['price'];
     $registration_no = $_POST['registration_no'];
@@ -17,7 +17,21 @@ date_default_timezone_set('UTC');
 
     if(isset($_POST['_id'])){
       $_id = $_POST['_id'];
-      $sql = "UPDATE vehicle SET designation='".$designation."',carry='".$carry."',type_vehicle='".$type_vehicle."',registration_no='".$registration_no."',date_created='".$date_created."',measure_km='".$measure_km."',price='".$price."' WHERE _id=$_id";
+      $publish = $_POST['publish'];
+
+      switch($publish){
+
+        case '1':
+          $publish = true;
+          break;
+
+        case '2':
+          $publish = false;
+          break;
+
+      }
+
+      $sql = "UPDATE vehicle SET designation='".$designation."',carry='".$carry."',type_vehicle='".$type_vehicle."',registration_no='".$registration_no."',date_created='".$date_created."',measure_km='".$measure_km."',price='".$price."',publish='".$publish."' WHERE _id=$_id";
     }
     else {
       $sql = "INSERT INTO vehicle(designation,carry,type_vehicle,registration_no,date_created,measure_km,price) VALUES ('".$designation."','".$carry."','".$type_vehicle."','".$registration_no."','".$date_created."','".$measure_km."','".$price."')";

@@ -159,6 +159,28 @@ if(PHP_SESSION_NONE){
       <?php
       break;
 
+      case 'order_vehicle_list':
+      include("include/vehicle/order_vehicle_list.php");
+      ?>
+
+        <script>
+          $('[href="#vehicle"]').trigger('click')
+        </script>
+
+      <?php
+      break;
+
+      case 'ordered_vehicle_list':
+      include("include/vehicle/ordered_vehicle_list.php");
+      ?>
+
+        <script>
+          $('[href="#vehicle"]').trigger('click')
+        </script>
+
+      <?php
+      break;
+
     default:
       include("include/dashboard.php");
       break;

@@ -53,6 +53,17 @@ if($mode) {
             <form class="edit_vehicle" id="edit_vehicle">
 
               <div class="col-sm-6 form-group">
+                <label for="publish">Buka Tempahan</label>
+                <div class="radio">
+                  <label><input type="radio" name="publish" <?php if($result['publish'] == true){ echo "checked"; }?> value="1">Ya</label>
+                </div>
+                <div class="radio">
+                  <label><input type="radio" name="publish" <?php if($result['publish'] == false){ echo "checked"; }?> value="2">Tidak</label>
+                </div>
+
+              </div>
+
+              <div class="col-sm-6 form-group" style="clear:left">
                 <label for="designation">Penjawatan</label>
                 <input type="text" class="form-control" name="designation" placeholder="Pegangan" value="<?php echo $result['designation']; ?>">
               </div>
@@ -74,7 +85,13 @@ if($mode) {
 
               <div class="col-sm-6 form-group">
                 <label for="date_created">Tarikh Termasuk Khidmat</label>
-                <input type="text" class="form-control" name="date_created" placeholder="Tarikh Termasuk Khidmat" value="<?php echo $result['date_created']; ?>">
+
+                <div class="input-group date" data-provide="datepicker">
+                  <input type="text" name="date_created" class="form-control" value="<?php echo $result['date_created']; ?>">
+                  <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-th"></span>
+                  </div>
+                </div>
               </div>
 
               <div class="col-sm-6 form-group">
@@ -128,7 +145,13 @@ if($mode) {
 
             <div class="col-sm-6 form-group">
               <label for="date_created">Tarikh Termasuk Khidmat</label>
-              <input type="text" class="form-control" name="date_created" placeholder="Tarikh Termasuk Khidmat">
+
+              <div class="input-group date" data-provide="datepicker">
+                <input type="text" name="date_created" class="form-control">
+                <div class="input-group-addon">
+                  <span class="glyphicon glyphicon-th"></span>
+                </div>
+              </div>
             </div>
 
             <div class="col-sm-6 form-group">
@@ -162,6 +185,7 @@ if($mode) {
                 <th data-field="date_created" data-sortable="true">Tarikh Termasuk Khidmat</th>
                 <th data-field="measure_km" data-sortable="true">Bacaan (KM)</th>
                 <th data-field="price" data-sortable="true">Harga</th>
+                <th data-field="order" data-sortable="true">Tempahan</th>
                 <th data-field="edit" data-sortable="true">Kemaskini</th>
               </tr>
               </thead>
@@ -183,6 +207,7 @@ if($mode) {
                 <td>'.$rows['date_created'].'</td>
                 <td>'.$rows['measure_km'].'</td>
                 <td>'.$rows['price'].'</td>
+                <td>'; if($rows['publish'] == true ) { echo "<span class='bg-success' style='padding: 3px;'>Dibuka</span>"; } else { echo "<span class='bg-danger' style='padding: 3px;'>Ditutup</span>"; } echo '</td>
                 <td>
                   <span class="btn btn-primary btn-xs" xedit='.$rows['_id'].'>edit</span>
                   <span class="btn btn-danger btn-xs" xremove='.$rows['_id'].'>hapus</span>
@@ -193,6 +218,14 @@ if($mode) {
               }
 
               ?>
+
+              <?php if(mysqli_num_rows($result) == 0){ ?>
+
+                <tr>
+                  <td colspan="9">Tiada data untuk dipaparkan</td>
+                </tr>
+
+              <?php } ?>
 
               </tbody>
             </table>
@@ -405,6 +438,42 @@ if($mode) {
     var _id = $(e.currentTarget).attr('xedit');
 
     window.location = "index.php?flow=vehicle_carryOnList&mode=edit&_id="+_id
+
+  });
+
+  $('[xremove]').click(function(e, tpl){
+
+    var _id = $(e.currentTarget).attr('xremove');
+
+    swal({
+
+      title: '',
+      text: 'Adakah anda ingin menghapuskan kenderaan ini?',
+      showCancelButton: true,
+      confirmButtonText: "Ya",
+      cancelButtonText: "Tidak",
+      type: 'warning',
+      closeOnConfirm: false,
+      closeOnCancel: true
+
+    }, function (isConfirm) {
+
+      if(isConfirm){
+
+        $.ajax({
+          type: "POST",
+          url: "include/vehicle/process/remove.php",
+          data: {
+            _id: _id
+          },
+          success: function () {
+            window.location = "index.php?flow=vehicle_carryOnList"
+          }
+        });
+
+      }
+
+    });
 
   });
 
