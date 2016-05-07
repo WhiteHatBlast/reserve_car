@@ -43,6 +43,7 @@ if(PHP_SESSION_NONE){
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/datepicker3.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/sweetalert.css" rel="stylesheet">
 
   <!--Icons-->
   <script src="js/lumino.glyphs.js"></script>
@@ -52,6 +53,7 @@ if(PHP_SESSION_NONE){
   <![endif]-->
   <script src="js/jquery-1.11.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  <script src="js/sweetalert.min.js"></script>
 
 </head>
 
@@ -146,6 +148,17 @@ if(PHP_SESSION_NONE){
       <?php
       break;
 
+      case 'vehicle_carryOnList':
+      include("include/vehicle/vehicle_carryOnList.php");
+      ?>
+
+        <script>
+          $('[href="#vehicle"]').trigger('click')
+        </script>
+
+      <?php
+      break;
+
     default:
       include("include/dashboard.php");
       break;
@@ -171,6 +184,7 @@ if(!isset($_REQUEST['flow'])){
 <script src="js/bootstrap-datepicker.js"></script>
 <script src="js/bootstrap-table.js"></script>
 <script src="js/functions.js"></script>
+<script src="js/lodash.js"></script>
 <script>
 
   !function ($) {

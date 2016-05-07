@@ -13,9 +13,17 @@ $("form#register").submit(function (e) {
     type: "POST",
     url: "process/register.php",
     data: form,
-    success: function (html) {
+    success: function (reason) {
 
-      console.log(html)
+      if(reason == 0){
+
+        swal('', 'Maklumat Anda Telah Wujud', 'error')
+
+      } else {
+
+        swal('', 'Maklumat Anda Berjaya Didaftarkan', 'success')
+
+      }
 
     }
   });

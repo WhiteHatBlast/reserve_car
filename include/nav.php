@@ -52,7 +52,7 @@ if(isset($_REQUEST['flow'])){
         <?php if(rolesAllowed($user_roles, [01,02])) /* admin, staff, user */ {?>
 
         <li>
-          <a class="" href="#">
+          <a class="<?php if(isset($flow)) { if($flow == 'vehicle_carryOnList') echo 'active-nav'; }?>" href="?flow=vehicle_carryOnList">
             <svg class="glyph stroked notepad ">
               <use xlink:href="#stroked-notepad"/>
             </svg> Senarai Pegangan Kenderaan
@@ -75,7 +75,7 @@ if(isset($_REQUEST['flow'])){
 
         <?php } ?>
 
-        <?php if(rolesAllowed($user_roles, [01,02])) /* admin, staff, user */ {?>
+        <?php if(rolesAllowed($user_roles, [01])) /* admin, staff, user */ {?>
 
           <li>
             <a class="" href="#">

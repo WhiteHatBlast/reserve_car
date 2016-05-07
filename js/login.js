@@ -11,8 +11,6 @@ $("form#login").submit(function (e) {
     data: form,
     success: function (html) {
 
-      console.log(html);
-
       if (html == true) {
 
         swal(

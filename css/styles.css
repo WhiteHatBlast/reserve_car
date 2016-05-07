@@ -933,6 +933,12 @@ h1.page-header {
 	background: #DCF0FF !important;
 }
 
+div.scroll {
+	/* width: 100%; */ /* Optional */
+	/* border-collapse: collapse; */
+	border-spacing: 0;
+	overflow-y: auto;
+}
 
 
 
