@@ -6,6 +6,10 @@ if(PHP_SESSION_NONE){
 
   $userId = $_SESSION['session_userID'];
 
+  if(!$userId){
+    header('Location:login.php');
+  }
+
   include("include/findOneUser.php");
 
 }
@@ -79,7 +83,7 @@ if(PHP_SESSION_NONE){
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="#" onclick="XIO.logout();">
                 <svg class="glyph stroked cancel">
                   <use xlink:href="#stroked-cancel"></use>
                 </svg>
@@ -166,6 +170,7 @@ if(!isset($_REQUEST['flow'])){
 
 <script src="js/bootstrap-datepicker.js"></script>
 <script src="js/bootstrap-table.js"></script>
+<script src="js/functions.js"></script>
 <script>
 
   !function ($) {

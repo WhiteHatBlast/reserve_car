@@ -18,4 +18,16 @@ $(document).ready(function () {
 
   };
 
+  XIO.logout = function(){
+
+    $.ajax({
+      type: "POST",
+      url: "process/logout.php",
+      success: function () {
+        window.location = "login.php"
+      }
+    });
+
+  }
+
 });
