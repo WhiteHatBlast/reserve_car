@@ -4,6 +4,28 @@
   </div>
 </div><!--/.row-->
 
+<?php
+
+include("_connection/config.php");
+
+if(rolesAllowed($user_roles, [01,02])){
+
+  $query = "SELECT * FROM tempahan";
+  $row = mysqli_num_rows(mysqli_query($conn, $query));
+
+}
+
+if(rolesAllowed($user_roles, [03])){
+
+  $userId = $_SESSION['session_userID'];
+
+  $query = "SELECT * FROM tempahan WHERE user_id=$userId";
+  $row = mysqli_num_rows(mysqli_query($conn, $query));
+
+}
+
+?>
+
 <div class="row">
   <div class="col-xs-12 col-md-6 col-lg-4">
     <div class="panel panel-blue panel-widget ">
@@ -14,21 +36,8 @@
           </svg>
         </div>
         <div class="col-sm-9 col-lg-7 widget-right">
-          <div class="large">120</div>
+          <div class="large"><?=$row;?></div>
           <div class="text-muted">Tempah Kenderaan</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div><!--/.row-->
-
-<div class="row">
-  <div class="col-lg-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">Tempahan Terkini</div>
-      <div class="panel-body">
-        <div class="canvas-wrapper">
-          <canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
         </div>
       </div>
     </div>
