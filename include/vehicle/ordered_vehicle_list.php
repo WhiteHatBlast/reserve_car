@@ -22,6 +22,8 @@ $result = mysqli_query($conn, $query);
               <th data-field="designation" data-sortable="true">Penjawatan</th>
               <th data-field="start_order" data-sortable="true">Tarikh Mula</th>
               <th data-field="end_order" data-sortable="true">Tarikh Akhir</th>
+              <th data-field="verified" class="width-140 text-center" data-sortable="true">Pengesahan</th>
+              <th data-field="approved" class="width-140 text-center" data-sortable="true">Status</th>
             </tr>
             </thead>
             <tbody>
@@ -38,6 +40,19 @@ $result = mysqli_query($conn, $query);
                 <td>' . $rows['designation'] . '</td>
                 <td>' . $rows['start_order'] . '</td>
                 <td>' . $rows['end_order'] . '</td>
+                <td class="text-center">';
+                if($rows['status_verified'] == 0){
+                  echo "Belum Sah";
+                } else {
+                  echo "Disahkan";
+                }
+              echo '</td><td class="text-center">';
+                if($rows['approved'] == 0){
+                  echo "Belum Diterima";
+                } else {
+                  echo "Diterima";
+                }
+              echo '</td>
               </tr>
              ';
 

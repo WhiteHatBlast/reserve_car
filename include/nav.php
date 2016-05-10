@@ -63,7 +63,7 @@ if(isset($_REQUEST['flow'])){
           </a>
         </li>
         <li>
-          <a href="#">
+          <a class="<?php if(isset($flow)) { if($flow == 'ordered_vehicle_approval_list') echo 'active-nav'; }?>" href="?flow=ordered_vehicle_approval_list" href="#">
             <svg class="glyph stroked notepad ">
               <use xlink:href="#stroked-notepad"/>
             </svg> Senarai Tempahan Kenderaan
@@ -104,6 +104,13 @@ if(isset($_REQUEST['flow'])){
               <svg class="glyph stroked bag">
                 <use xlink:href="#stroked-bag"></use>
               </svg> Senarai Tempahan Kenderaan
+            </a>
+          </li>
+          <li>
+            <a class="<?php if(isset($flow)) { if($flow == 'ordered_vehicle_approved_list') echo 'active-nav'; }?>" href="?flow=ordered_vehicle_approved_list" href="#">
+              <svg class="glyph stroked bag">
+                <use xlink:href="#stroked-bag"></use>
+              </svg> Senarai Tempahan Kenderaan Disahkan
             </a>
           </li>
         <?php } ?>

@@ -181,6 +181,28 @@ if(PHP_SESSION_NONE){
       <?php
       break;
 
+      case 'ordered_vehicle_approval_list':
+      include("include/vehicle/ordered_vehicle_approval_list.php");
+      ?>
+
+        <script>
+          $('[href="#vehicle"]').trigger('click')
+        </script>
+
+      <?php
+      break;
+
+      case 'ordered_vehicle_approved_list':
+      include("include/vehicle/ordered_vehicle_approved_list.php");
+      ?>
+
+        <script>
+          $('[href="#vehicle"]').trigger('click')
+        </script>
+
+      <?php
+      break;
+
     default:
       include("include/dashboard.php");
       break;
