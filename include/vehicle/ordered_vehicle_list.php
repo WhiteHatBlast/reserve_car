@@ -35,7 +35,7 @@ $result = mysqli_query($conn, $query);
             while ($rows = mysqli_fetch_array($result)) {
 
               echo '
-              <tr class="cursor-cyan" xorder="' . $rows['_id'] . '">
+              <tr class="" xorder="' . $rows['_id'] . '">
                 <td>' . $index++ . '</td>
                 <td>' . $rows['designation'] . '</td>
                 <td>' . $rows['start_order'] . '</td>
