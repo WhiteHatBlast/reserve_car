@@ -78,14 +78,6 @@ if(PHP_SESSION_NONE){
             <?php echo $user_email;?> <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li>
-              <a href="#">
-                <svg class="glyph stroked male-user">
-                  <use xlink:href="#stroked-male-user"></use>
-                </svg>
-                Profil
-              </a>
-            </li>
-            <li>
               <a href="#" onclick="XIO.logout();">
                 <svg class="glyph stroked cancel">
                   <use xlink:href="#stroked-cancel"></use>
