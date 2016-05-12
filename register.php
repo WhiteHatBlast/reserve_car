@@ -8,6 +8,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/datepicker3.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/shining.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
 
   <!--[if lt IE 9]>
@@ -16,11 +17,20 @@
 
 </head>
 
-<body>
+<body style="background:#71c4ff;" class="shine-me">
+
+<div class="row align-center" align="center">
+  <span class="text-center">
+    <span class="font-size-30">ALK</span><br/>
+      <span class="font-size-20 clear-left">AKADEMI LATIHAN KETENTERAAN</span><br/>
+        <span class="font-size-15 clear-left">( Universiti Pertahanan Nasional Malaysia )</span><br/>
+          <span class="font-size-50 clear-left">SISTEM PENGURUSAN MAKLUMAT TRUP KENDERAAN</span>
+  </span>
+</div>
 
 <div id="add_err" align="center"></div>
 
-<div class="row">
+<div class="row m-t-50">
   <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
     <div class="login-panel panel panel-default">
       <div class="panel-heading">Daftar Pengguna</div>

@@ -43,6 +43,7 @@ if(PHP_SESSION_NONE){
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/datepicker3.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/shining.css" rel="stylesheet">
   <link href="css/sweetalert.css" rel="stylesheet">
 
   <!--Icons-->
@@ -57,7 +58,7 @@ if(PHP_SESSION_NONE){
 
 </head>
 
-<body>
+<body style="background:#71c4ff;" class="shine-me">
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -205,6 +206,15 @@ if(PHP_SESSION_NONE){
 
     default:
       include("include/dashboard.php");
+      ?>
+
+    <script>
+      $('[href="#organization"]').trigger('click');
+      $('[href="#admin"]').trigger('click');
+      $('[href="#vehicle"]').trigger('click');
+    </script>
+
+  <?php
       break;
 
 

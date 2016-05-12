@@ -8,7 +8,6 @@ Version 1.0
 
 body {
 	background: #f1f4f7;
-	padding-top: 50px;
 	color: #5f6468;
 }
 
@@ -1026,4 +1025,40 @@ div.scroll {
 	width:200px;
 }
 
+.m-t-50{
+	margin-top: 50px;
+}
+.align-center{
+	margin: auto;
+	background: black;
+	color:deepskyblue;
+	padding: 10px;
+}
 
+.font-size-50{
+	font-size: 50px;
+}
+
+.font-size-30{
+	font-size: 30px;
+}
+
+.font-size-20{
+	font-size: 20px;
+}
+
+.font-size-15{
+	font-size: 15px;
+}
+
+.clear-left{
+	clear:left;
+}
+
+.clear-right{
+	clear:right;
+}
+
+.clear-both{
+	clear:both;
+}

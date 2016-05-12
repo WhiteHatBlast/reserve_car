@@ -93,6 +93,7 @@ if (isset($_REQUEST['mode'])) {
                 <th data-field="date_created" data-sortable="true">Tarikh Termasuk Khidmat</th>
                 <th data-field="measure_km" data-sortable="true">Bacaan (KM)</th>
                 <th data-field="price" data-sortable="true">Harga</th>
+                <th data-field="price" data-sortable="true" class="text-center">Tindakan</th>
               </tr>
               </thead>
               <tbody>
@@ -104,15 +105,16 @@ if (isset($_REQUEST['mode'])) {
               while ($rows = mysqli_fetch_array($result)) {
 
                 echo '
-              <tr class="cursor-cyan" xorder="' . $rows['_id'] . '">
-                <td>' . $index++ . '</td>
-                <td>' . $rows['designation'] . '</td>
-                <td>' . $rows['carry'] . '</td>
-                <td>' . $rows['type_vehicle'] . '</td>
-                <td>' . $rows['registration_no'] . '</td>
-                <td>' . $rows['date_created'] . '</td>
-                <td>' . $rows['measure_km'] . '</td>
-                <td>' . $rows['price'] . '</td>
+              <tr class="cursor-cyan">
+                <td xorder="' . $rows['_id'] . '">' . $index++ . '</td>
+                <td xorder="' . $rows['_id'] . '">' . $rows['designation'] . '</td>
+                <td xorder="' . $rows['_id'] . '">' . $rows['carry'] . '</td>
+                <td xorder="' . $rows['_id'] . '">' . $rows['type_vehicle'] . '</td>
+                <td xorder="' . $rows['_id'] . '">' . $rows['registration_no'] . '</td>
+                <td xorder="' . $rows['_id'] . '">' . $rows['date_created'] . '</td>
+                <td xorder="' . $rows['_id'] . '">' . $rows['measure_km'] . '</td>
+                <td xorder="' . $rows['_id'] . '">' . $rows['price'] . '</td>
+                <td class="text-center"><span class="btn btn-danger btn-sm text-center" xrevokeOrder="'.$rows['_id'].'">batal</span></td>
               </tr>
              ';
 
@@ -232,6 +234,66 @@ if (isset($_REQUEST['mode'])) {
 
       }
     });
+
+  })
+
+  $('[xrevokeOrder]').click(function(e, tpl){
+
+    var _id = $(e.currentTarget).attr('xrevokeOrder');
+
+    swal({
+
+      title: '',
+      text: 'Adakah anda ingin membatalkan tempahan ini?',
+      showCancelButton: true,
+      confirmButtonText: "Ya",
+      cancelButtonText: "Tidak",
+      type: 'warning',
+      closeOnConfirm: false,
+      closeOnCancel: true
+
+    }, function (isConfirm) {
+
+      if (isConfirm) {
+
+        $.ajax({
+          type: "POST",
+          url: "include/vehicle/process/revoke_order.php",
+          data: { _id: _id, remove: true },
+          success: function (reason) {
+
+            if(reason == 1){
+
+              swal({
+
+                title: '',
+                text: 'Maklumat berjaya dibatalkan',
+                confirmButtonText: "Ya",
+                type: 'success',
+                closeOnConfirm: false
+
+              }, function () {
+
+                switch (reason) {
+
+                  case '1':
+                    window.location = "index.php?flow=order_vehicle_list";
+                    break;
+
+                }
+
+              });
+
+            }
+
+          }
+
+        });
+
+      }
+
+    });
+
 
   })
 
