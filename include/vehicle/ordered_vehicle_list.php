@@ -24,6 +24,7 @@ $result = mysqli_query($conn, $query);
               <th data-field="end_order" data-sortable="true">Tarikh Akhir</th>
               <th data-field="verified" class="width-140 text-center" data-sortable="true">Pengesahan</th>
               <th data-field="approved" class="width-140 text-center" data-sortable="true">Status</th>
+              <th data-field="approved" class="width-140 text-center" data-sortable="true">Tindakan</th>
             </tr>
             </thead>
             <tbody>
@@ -53,6 +54,7 @@ $result = mysqli_query($conn, $query);
                   echo "Diterima";
                 }
               echo '</td>
+                    <td class="text-center"><span class="btn btn-danger btn-sm text-center" xrevokeOrder="'.$rows['_id'].'">batal</span></td>
               </tr>
              ';
 
@@ -75,3 +77,67 @@ $result = mysqli_query($conn, $query);
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+
+  $('[xrevokeOrder]').click(function(e, tpl){
+
+    var _id = $(e.currentTarget).attr('xrevokeOrder');
+
+    swal({
+
+      title: '',
+      text: 'Adakah anda ingin membatalkan tempahan ini?',
+      showCancelButton: true,
+      confirmButtonText: "Ya",
+      cancelButtonText: "Tidak",
+      type: 'warning',
+      closeOnConfirm: false,
+      closeOnCancel: true
+
+    }, function (isConfirm) {
+
+      if (isConfirm) {
+
+        $.ajax({
+          type: "POST",
+          url: "include/vehicle/process/revoke_order.php",
+          data: { _id: _id, remove: true },
+          success: function (reason) {
+
+            if(reason == 1){
+
+              swal({
+
+                title: '',
+                text: 'Maklumat berjaya dibatalkan',
+                confirmButtonText: "Ya",
+                type: 'success',
+                closeOnConfirm: false
+
+              }, function () {
+
+                switch (reason) {
+
+                  case '1':
+                    window.location = "index.php?flow=order_vehicle_list";
+                    break;
+
+                }
+
+              });
+
+            }
+
+          }
+
+        });
+
+      }
+
+    });
+
+
+  })
+  
+</script>

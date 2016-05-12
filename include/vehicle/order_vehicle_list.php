@@ -114,7 +114,6 @@ if (isset($_REQUEST['mode'])) {
                 <td xorder="' . $rows['_id'] . '">' . $rows['date_created'] . '</td>
                 <td xorder="' . $rows['_id'] . '">' . $rows['measure_km'] . '</td>
                 <td xorder="' . $rows['_id'] . '">' . $rows['price'] . '</td>
-                <td class="text-center"><span class="btn btn-danger btn-sm text-center" xrevokeOrder="'.$rows['_id'].'">batal</span></td>
               </tr>
              ';
 
@@ -236,65 +235,4 @@ if (isset($_REQUEST['mode'])) {
     });
 
   })
-
-  $('[xrevokeOrder]').click(function(e, tpl){
-
-    var _id = $(e.currentTarget).attr('xrevokeOrder');
-
-    swal({
-
-      title: '',
-      text: 'Adakah anda ingin membatalkan tempahan ini?',
-      showCancelButton: true,
-      confirmButtonText: "Ya",
-      cancelButtonText: "Tidak",
-      type: 'warning',
-      closeOnConfirm: false,
-      closeOnCancel: true
-
-    }, function (isConfirm) {
-
-      if (isConfirm) {
-
-        $.ajax({
-          type: "POST",
-          url: "include/vehicle/process/revoke_order.php",
-          data: { _id: _id, remove: true },
-          success: function (reason) {
-
-            if(reason == 1){
-
-              swal({
-
-                title: '',
-                text: 'Maklumat berjaya dibatalkan',
-                confirmButtonText: "Ya",
-                type: 'success',
-                closeOnConfirm: false
-
-              }, function () {
-
-                switch (reason) {
-
-                  case '1':
-                    window.location = "index.php?flow=order_vehicle_list";
-                    break;
-
-                }
-
-              });
-
-            }
-
-          }
-
-        });
-
-      }
-
-    });
-
-
-  })
-
 </script>
