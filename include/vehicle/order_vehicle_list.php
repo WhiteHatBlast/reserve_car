@@ -93,7 +93,6 @@ if (isset($_REQUEST['mode'])) {
                 <th data-field="date_created" data-sortable="true">Tarikh Termasuk Khidmat</th>
                 <th data-field="measure_km" data-sortable="true">Bacaan (KM)</th>
                 <th data-field="price" data-sortable="true">Harga</th>
-                <th data-field="price" data-sortable="true" class="text-center">Tindakan</th>
               </tr>
               </thead>
               <tbody>
