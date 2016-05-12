@@ -61,7 +61,7 @@ $result = mysqli_query($conn, $query);
           <thead>
           <tr>
             <th data-field="bil" style="width: 30px">Bil</th>
-            <th data-field="name" data-sortable="true">Nama</th>
+            <th data-field="name" data-sortable="true">Email</th>
           </tr>
           </thead>
           <tbody>
