@@ -16,35 +16,6 @@ if(isset($_REQUEST['flow'])){
       </a>
     </li>
 
-    <?php if(rolesAllowed($user_roles, [01])) /* staff */ {?>
-
-    <li class="parent ">
-      <a data-toggle="collapse" href="#organization">
-        <span>
-          <i class="fa fa-building-o" aria-hidden="true"></i>
-        </span> Organisasi
-      </a>
-      <ul class="children collapse" id="organization">
-        <li class="">
-          <a class="<?php if(isset($flow)) { if($flow == 'organization_list') echo 'active-nav'; }?>" href="?flow=organization_list">
-            <i class="fa fa-bars" aria-hidden="true"></i> Mengenai Organisasi
-          </a>
-        </li>
-        <li>
-          <a class="" href="#">
-            <i class="fa fa-bars" aria-hidden="true"></i> Carta Organisasi
-          </a>
-        </li>
-        <li>
-          <a class="" href="#">
-            <i class="fa fa-bars" aria-hidden="true"></i> Kakitangan
-          </a>
-        </li>
-      </ul>
-    </li>
-
-    <?php } ?>
-
     <li class="parent ">
       <a data-toggle="collapse" href="#vehicle">
         <span>
@@ -69,25 +40,6 @@ if(isset($_REQUEST['flow'])){
             </svg> Senarai Tempahan Kenderaan
           </a>
         </li>
-
-        <?php } ?>
-
-        <?php if(rolesAllowed($user_roles, [01])) /* admin, staff, user */ {?>
-
-          <li>
-            <a class="" href="#">
-              <svg class="glyph stroked notepad ">
-                <use xlink:href="#stroked-notepad"/>
-              </svg> Senarai Kakitangan Staf
-            </a>
-          </li>
-          <li>
-            <a class="" href="#">
-              <svg class="glyph stroked sound on">
-                <use xlink:href="#stroked-sound-on"/>
-              </svg> Perintah Harian Staf
-            </a>
-          </li>
 
         <?php } ?>
 
@@ -131,6 +83,12 @@ if(isset($_REQUEST['flow'])){
           <li>
             <a class="<?php if(isset($flow)) { if($flow == 'staff_list') echo 'active-nav'; }?>" href="?flow=staff_list">
               <i class="fa fa-user-secret"></i> Senarai Staff
+            </a>
+          </li>
+
+          <li>
+            <a class="<?php if(isset($flow)) { if($flow == 'user_list') echo 'active-nav'; }?>" href="?flow=user_list">
+              <i class="fa fa-user-secret"></i> Senarai Pengguna
             </a>
           </li>
 

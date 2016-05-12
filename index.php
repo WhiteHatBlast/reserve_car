@@ -149,6 +149,17 @@ if(PHP_SESSION_NONE){
       <?php
       break;
 
+      case 'user_list':
+      include("include/user/list.php");
+      ?>
+
+        <script>
+          $('[href="#admin"]').trigger('click')
+        </script>
+
+      <?php
+      break;
+
       case 'vehicle_carryOnList':
       include("include/vehicle/vehicle_carryOnList.php");
       ?>

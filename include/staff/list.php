@@ -12,7 +12,7 @@ $result = mysqli_query($conn, $query);
 
 <div class="row">
   <div class="col-xs-12">
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="margin-top: 20px">
       <div class="panel-heading">
         Senarai Staf
         <span class="pull-right">
