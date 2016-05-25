@@ -47,17 +47,34 @@ $result = mysqli_query($conn, $query);
                 } else {
                   echo "Disahkan";
                 }
-              echo '</td><td class="text-center">';
+
+              echo '</td>';
+
+              if($rows['revoke_order'] == FALSE){
+
                 if($rows['approved'] == 0){
+
+                  echo '<td class="text-center">';
+
                   echo "Belum Diterima";
                 } else {
                   echo "Diterima";
                 }
-              echo '</td>
-                    <td class="text-center"><span class="btn btn-danger btn-sm text-center" xrevokeOrder="'.$rows['_id'].'">batal</span></td>
-              </tr>
-             ';
+                echo '</td><td class="text-center"><span class="btn btn-danger btn-sm text-center" xrevokeOrder="'.$rows['_id'].'">batal</span></td>';
 
+              } else {
+
+                echo '<td class="text-center">Dibatalkan</td>';
+
+              }
+
+            if($rows['revoke_order'] == TRUE){
+
+              echo '<td>Tiada Tindakan</td>';
+
+            }
+
+              echo '</tr>';
             }
 
             ?>
